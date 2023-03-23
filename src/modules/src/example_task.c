@@ -33,7 +33,7 @@ static void exampleTask(void* parameters){
     while (true) {
         int input;
         if (pdTRUE == xQueueReceive(inputQueue, &input, portMAX_DELAY)) {
-            // Respond to input here!
+            DEBUG_PRINT("Value: %d\n",input);
         }
     }
 }
