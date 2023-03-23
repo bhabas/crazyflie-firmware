@@ -46,7 +46,7 @@ obj-y += system.o
 obj-$(CONFIG_DECK_LOCO) += tdoaEngineInstance.o
 obj-y += vcp_esc_passthrough.o
 obj-y += worker.o
-obj-y += example_task.o
+obj-y += aideck_comm_task.o
 
 # Sub folders
 obj-$(CONFIG_ESTIMATOR_KALMAN_ENABLE) += kalman_core/
