@@ -74,6 +74,7 @@
 #include "i2cdev.h"
 #include "autoconf.h"
 #include "vcp_esc_passthrough.h"
+#include "example_task.h"
 #if CONFIG_ENABLE_CPX
   #include "cpxlink.h"
 #endif
@@ -165,6 +166,7 @@ bool systemTest()
   pass &= pmTest();
   pass &= workerTest();
   pass &= buzzerTest();
+  pass &= exampleTaskTest();
   return pass;
 }
 
@@ -219,6 +221,7 @@ void systemTask(void *arg)
   }
   soundInit();
   crtpMemInit();
+  exampleTaskInit();
 
 #ifdef PROXIMITY_ENABLED
   proximityInit();
