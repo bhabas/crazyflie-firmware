@@ -10,12 +10,12 @@
 #include "static_mem.h"
 #include "task.h"
 
-#include "uart1.h"
+// #include "uart1.h"
 
 
-extern float Theta_x_cam_est;
-extern float Theta_y_cam_est;
-extern float Theta_z_cam_est;
+// extern float Theta_x_cam_est;
+// extern float Theta_y_cam_est;
+// extern float Theta_z_cam_est;
 
 /**
  * Initialization of AI-Deck Communication task
