@@ -19,7 +19,7 @@ static bool isInit = false;
 static uint8_t data_Array[sizeof(float) * ARRAY_LENGTH]; // Byte-String data array
 float value_Array[ARRAY_LENGTH]; // Value array to store the received float values
 
-
+float value_3 = 0.0;
 
 static xQueueHandle taskQueue; // Not entirely sure but is part of task code
 STATIC_MEM_QUEUE_ALLOC(taskQueue, 1, sizeof(int));
@@ -57,6 +57,8 @@ void AIDeckComm_Task(void* parameters){
       for (int i = 0; i < ARRAY_LENGTH; i++) {
         memcpy(&value_Array[i], &data_Array[i * sizeof(float)], sizeof(float));
       }
+
+      value_3 = value_Array[0];
 
       // PRINT FLOAT ARRAY TO CONSOLE [DEBUG]
       DEBUG_PRINT("Value1: %f \t Value2: %f \t Value3: %f\n",(double)value_Array[0],(double)value_Array[1],(double)value_Array[2]);

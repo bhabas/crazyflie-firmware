@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 
+extern float value_3;
 
 /**
  * Initialization of AI-Deck Communication task
