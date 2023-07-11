@@ -77,6 +77,9 @@
   #include "cpxlink.h"
 #endif
 
+// CUSTOM INCLUDES
+#include "aideck_uart_comm.h"
+
 /* Private variable */
 static bool selftestPassed;
 static uint8_t dumpAssertInfo = 0;
@@ -158,6 +161,7 @@ bool systemTest()
   pass &= pmTest();
   pass &= workerTest();
   pass &= buzzerTest();
+  pass &= AI_UART_Task_Test();
   return pass;
 }
 
@@ -212,6 +216,7 @@ void systemTask(void *arg)
   }
   soundInit();
   crtpMemInit();
+  AI_UART_Task_Init();
 
 #ifdef PROXIMITY_ENABLED
   proximityInit();
