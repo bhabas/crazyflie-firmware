@@ -17,10 +17,7 @@
 void AI_UART_Task_Init();
 bool AI_UART_Task_Test();
 
-
-
-#define NUM_VALUES 10  // The number of values expected
-
-extern int32_t valArr[NUM_VALUES];  // Array to store received values
+#define NUM_VALUES 10
+extern int32_t data_arr[NUM_VALUES];  // Array to store received values
 extern bool isArrUpdated;
 extern SemaphoreHandle_t xMutex;
