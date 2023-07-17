@@ -17,7 +17,7 @@
 void AI_UART_Task_Init();
 bool AI_UART_Task_Test();
 
-#define NUM_VALUES 16
-extern int32_t data_arr[NUM_VALUES];  // Array to store received values
+#define UART_ARR_SIZE 16
+extern int32_t data_arr[UART_ARR_SIZE];  // Array to store received values
 extern bool isArrUpdated;
 extern SemaphoreHandle_t xMutex;

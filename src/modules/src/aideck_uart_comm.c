@@ -17,7 +17,7 @@ uint8_t END_MARKER[] = {0xFF, 0xEE, 0xDD, 0xDC};
 
 
 // INIT DATA ARRAY
-int32_t data_arr[NUM_VALUES];
+int32_t data_arr[UART_ARR_SIZE];
 int data_counter = 0;
 uint8_t buffer[4];
 bool isArrUpdated = false;
@@ -104,7 +104,7 @@ static void AI_UART_Task(void* parameters) {
                 // consolePrintf("Val: %d \t %ld\n",data_counter,bytes_to_int32(buffer));
          
                 // TRANSITION TO NEXT STATE
-                if(data_counter == NUM_VALUES)
+                if(data_counter == UART_ARR_SIZE)
                 {
                     state = STATE_WAIT_END;
 
@@ -127,7 +127,7 @@ static void AI_UART_Task(void* parameters) {
 
                     // DEBUG
                     // Print the received data
-                    // for (int i = 0; i < NUM_VALUES; i++) {
+                    // for (int i = 0; i < UART_ARR_SIZE; i++) {
                     //     consolePrintf("%ld ", data_arr[i]);
                     // }
                     // consolePrintf("\n");
