@@ -52,6 +52,7 @@
 #include "peer_localization.h"
 
 #include "num.h"
+#include "Shared_Lib.h"
 
 
 #define NBR_OF_RANGES_IN_PACKET   5
@@ -182,6 +183,7 @@ static void extPositionHandler(CRTPPacket* pk) {
 
   estimatorEnqueuePosition(&ext_pos);
   tickOfLastPacket = xTaskGetTickCount();
+  PrevCrazyswarmTick = xTaskGetTickCount();
 }
 
 static void extPoseHandler(const CRTPPacket* pk) {
@@ -199,6 +201,7 @@ static void extPoseHandler(const CRTPPacket* pk) {
 
   estimatorEnqueuePose(&ext_pose);
   tickOfLastPacket = xTaskGetTickCount();
+  PrevCrazyswarmTick = xTaskGetTickCount();
 }
 
 static void extPosePackedHandler(const CRTPPacket* pk) {
@@ -214,6 +217,8 @@ static void extPosePackedHandler(const CRTPPacket* pk) {
       ext_pose.stdDevQuat = extQuatStdDev;
       estimatorEnqueuePose(&ext_pose);
       tickOfLastPacket = xTaskGetTickCount();
+      PrevCrazyswarmTick = xTaskGetTickCount();
+
     } else {
       ext_pos.x = item->x / 1000.0f;
       ext_pos.y = item->y / 1000.0f;
