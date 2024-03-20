@@ -183,7 +183,7 @@ static void extPositionHandler(CRTPPacket* pk) {
 
   estimatorEnqueuePosition(&ext_pos);
   tickOfLastPacket = xTaskGetTickCount();
-  PrevCrazyswarmTick = xTaskGetTickCount();
+//   PrevCrazyswarmTick = xTaskGetTickCount();
 }
 
 static void extPoseHandler(const CRTPPacket* pk) {
@@ -198,6 +198,11 @@ static void extPoseHandler(const CRTPPacket* pk) {
   ext_pose.quat.w = data->qw;
   ext_pose.stdDevPos = extPosStdDev;
   ext_pose.stdDevQuat = extQuatStdDev;
+  
+  Quat_B_O_Vicon.x = ext_pose.quat.x;
+  Quat_B_O_Vicon.y = ext_pose.quat.y;
+  Quat_B_O_Vicon.z = ext_pose.quat.z;
+  Quat_B_O_Vicon.w = ext_pose.quat.w;
 
   estimatorEnqueuePose(&ext_pose);
   tickOfLastPacket = xTaskGetTickCount();
@@ -217,7 +222,7 @@ static void extPosePackedHandler(const CRTPPacket* pk) {
       ext_pose.stdDevQuat = extQuatStdDev;
       estimatorEnqueuePose(&ext_pose);
       tickOfLastPacket = xTaskGetTickCount();
-      PrevCrazyswarmTick = xTaskGetTickCount();
+    //   PrevCrazyswarmTick = xTaskGetTickCount();
 
     } else {
       ext_pos.x = item->x / 1000.0f;
